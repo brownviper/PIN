@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PIN_GEN;
 
 namespace PIN_TESTS
 {
@@ -6,9 +7,12 @@ namespace PIN_TESTS
     public class PinGenTests
     {
         [Test]
-        public void Test()
+        public void Generate_should_return_a_number()
         {
-            Assert.Fail("Yay, I m running and failling too");
+            var pinGen = new PinGen();
+            int number = pinGen.Generate();
+
+            Assert.That(number, Is.EqualTo(0));
         }
     }
 }

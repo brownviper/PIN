@@ -5,7 +5,9 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIN", "PIN\PIN.csproj", "{7AC0608F-3B04-4890-8F2D-7BF045E36EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIN-TESTS", "PIN-TESTS\PIN-TESTS.csproj", "{6A98D08C-6AB6-4C0D-9B05-563B4E904E58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIN-GEN-TESTS", "PIN-TESTS\PIN-GEN-TESTS.csproj", "{6A98D08C-6AB6-4C0D-9B05-563B4E904E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIN-GEN", "PIN-GEN\PIN-GEN.csproj", "{3770D29F-FA36-4A47-8400-01129A04C7EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6A98D08C-6AB6-4C0D-9B05-563B4E904E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A98D08C-6AB6-4C0D-9B05-563B4E904E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A98D08C-6AB6-4C0D-9B05-563B4E904E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3770D29F-FA36-4A47-8400-01129A04C7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3770D29F-FA36-4A47-8400-01129A04C7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3770D29F-FA36-4A47-8400-01129A04C7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3770D29F-FA36-4A47-8400-01129A04C7EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
