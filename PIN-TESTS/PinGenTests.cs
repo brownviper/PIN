@@ -7,12 +7,10 @@ namespace PIN_TESTS
     public class PinGenTests
     {
         [Test]
-        public void Generate_should_return_a_number()
+        public void Generate_should_retur_4_digit_number()
         {
             var pinGen = new PinGen();
-            int number = pinGen.Generate();
-
-            Assert.That(number, Is.EqualTo(0));
+            Assert.That(pinGen.Generate(), Is.EqualTo(1234));
         }
     }
 }
