@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiskFileSystem.cs" />
+    <Compile Include="FileSystemFacade.cs" />
     <Compile Include="PinGen.cs" />
+    <Compile Include="PinPersistence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

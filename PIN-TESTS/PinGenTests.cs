@@ -9,7 +9,7 @@ namespace PIN_TESTS
     public class PinGenTests
     {
         [Test]
-        public void Generate_should_retur_4_digit_number()
+        public void Generate_should_return_4_digit_number()
         {
             var pinGen = new PinGen();
             var pin = pinGen.Generate();
