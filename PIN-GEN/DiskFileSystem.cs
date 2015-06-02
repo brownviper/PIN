@@ -6,5 +6,9 @@
         {
             return false;
         }
+
+        public void LoadPins(string file_name)
+        {
+        }
     }
 }

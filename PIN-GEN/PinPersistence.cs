@@ -7,6 +7,7 @@
         public PinPersistence(FileSystemFacade fileSystemFacade)
         {
             this.fileSystemFacade = fileSystemFacade;
+            this.fileSystemFacade.LoadPins("");
         }
 
         public bool HasBeenGenerated(int pin)
