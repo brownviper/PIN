@@ -1,9 +1,8 @@
-﻿using System;
-
-namespace PIN_GEN
+﻿namespace PIN_GEN
 {
     public interface FileSystemFacade
     {
-        int[] LoadPins(String file_name);
+        int[] LoadPins();
+        void SavePin(int pin);
     }
 }
