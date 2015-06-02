@@ -1,18 +1,22 @@
-﻿namespace PIN_GEN
+﻿using System;
+
+namespace PIN_GEN
 {
     public class PinPersistence
     {
-        private readonly FileSystemFacade fileSystemFacade;
+        private readonly FileSystemFacade file_system;
 
-        public PinPersistence(FileSystemFacade fileSystemFacade)
+        public PinPersistence(FileSystemFacade file_system)
         {
-            this.fileSystemFacade = fileSystemFacade;
-            this.fileSystemFacade.LoadPins("");
+            this.file_system = file_system;
         }
 
         public bool HasBeenGenerated(int pin)
         {
-            return fileSystemFacade.IsPersisted(pin);
+            var stored_pins = file_system.LoadPins("");
+            var index = Array.IndexOf(stored_pins, pin);
+
+            return index != -1;
         }
     }
 }

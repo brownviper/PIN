@@ -1,14 +1,12 @@
-﻿namespace PIN_GEN
+﻿using System;
+
+namespace PIN_GEN
 {
     public class DiskFileSystem : FileSystemFacade
     {
-        public bool IsPersisted(int pin)
+        public int[] LoadPins(String file_name)
         {
-            return false;
-        }
-
-        public void LoadPins(string file_name)
-        {
+            return new[] {1234};
         }
     }
 }

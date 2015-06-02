@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System;
+using Moq;
 using NUnit.Framework;
 using PIN_GEN;
 
@@ -17,26 +18,38 @@ namespace PIN_TESTS
             pin_persistence = new PinPersistence(file_system.Object);
         }
 
-        [Test]
-        public void HasBeenGenerated_should_indicate_false_if_pin_is_stored()
-        {
-            file_system.Setup(o => o.IsPersisted(1234)).Returns(false);
 
-            Assert.That(pin_persistence.HasBeenGenerated(1234), Is.False);
+        [Test]
+        public void HasBeenGenerated_should_return_true_if_pin_is_stored()
+        {
+            var stored_pins = new[] {1234, 5678, 9101};
+
+            file_system.Setup(o => o.LoadPins(It.IsAny<String>())).Returns(stored_pins);
+
+            Assert.That(pin_persistence.HasBeenGenerated(5678), Is.True);
+            file_system.Verify(o => o.LoadPins(It.IsAny<String>()), Times.Once);
         }
 
         [Test]
-        public void HasBeenGenerated_should_indicate_false_true_if_pin_is_not_stored()
+        public void HasBeenGenerated_should_return_falas_if_pin_is_not_stored()
         {
-            file_system.Setup(o => o.IsPersisted(1234)).Returns(true);
+            var stored_pins = new[] { 1234, 5678, 9101 };
 
-            Assert.That(pin_persistence.HasBeenGenerated(1234), Is.True);
+            file_system.Setup(o => o.LoadPins(It.IsAny<String>())).Returns(stored_pins);
+
+            Assert.That(pin_persistence.HasBeenGenerated(7575), Is.False);
+            file_system.Verify(o => o.LoadPins(It.IsAny<String>()), Times.Once);
         }
 
         [Test]
-        public void Constructor_should_ask_filesystem_facade_to_load_generated_pin_file()
+        public void HasBeenGenerated_should_return_false_if_no_pin_is_stored()
         {
-            file_system.Verify( o => o.LoadPins(It.IsAny<string>()), Times.Once);
+            var stored_pins = new int[]{};
+
+            file_system.Setup(o => o.LoadPins(It.IsAny<String>())).Returns(stored_pins);
+
+            Assert.That(pin_persistence.HasBeenGenerated(5678), Is.False);
+            file_system.Verify(o => o.LoadPins(It.IsAny<String>()), Times.Once);
         }
     }
 }
