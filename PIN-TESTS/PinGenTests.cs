@@ -8,13 +8,20 @@ namespace PIN_TESTS
     [TestFixture]
     public class PinGenTests
     {
+        private PinGen pin_gen;
+
+        [SetUp]
+        public void Setup()
+        {
+            pin_gen = new PinGen();
+        }
+
         [Test]
         public void Generate_should_return_4_digit_number()
         {
-            var pinGen = new PinGen();
-            var pin = pinGen.Generate();
+            var pin = pin_gen.Generate();
 
-            string pattern = @"\d\d\d\d";
+            const string pattern = @"\d\d\d\d";
             var regex = new Regex(pattern);
             var matches = regex.Matches(pin.ToString(CultureInfo.InvariantCulture));
 
@@ -24,10 +31,8 @@ namespace PIN_TESTS
         [Test]
         public void Generate_should_return_random_4_digit_pin_number()
         {
-            var pinGen = new PinGen();
-
-            var first_pin = pinGen.Generate();
-            var second_pin = pinGen.Generate();
+            var first_pin = pin_gen.Generate();
+            var second_pin = pin_gen.Generate();
 
             Assert.That(first_pin, Is.Not.EqualTo(second_pin));
         }
