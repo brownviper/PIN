@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using PIN_GEN;
 
@@ -9,13 +10,13 @@ namespace PIN_TESTS
     {
         private Mock<FileSystemFacade> file_system;
         private PinPersistence pin_persistence;
-        private int[] stored_pins;
+        private List<int> stored_pins;
 
         [SetUp]
         public void SetUp()
         {
-            stored_pins = new[] { 1234, 5678, 9101 };
-            
+            stored_pins = new List<int>{1234, 5678, 9101};
+
             file_system = new Mock<FileSystemFacade>();
             file_system.Setup(o => o.LoadPins()).Returns(stored_pins);
 
@@ -34,7 +35,7 @@ namespace PIN_TESTS
         [Test]
         public void When_the_pin_is_not_stored_it_should_as_the_file_system_to_store_it()
         {
-            file_system.Setup(o => o.LoadPins()).Returns(new int[] {});
+            file_system.Setup(o => o.LoadPins()).Returns(new List<int>());
 
             pin_persistence.HasBeenGenerated(7575);
 

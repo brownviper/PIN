@@ -1,8 +1,10 @@
-﻿namespace PIN_GEN
+﻿using System.Collections.Generic;
+
+namespace PIN_GEN
 {
     public interface FileSystemFacade
     {
-        int[] LoadPins();
+        List<int> LoadPins();
         void SavePin(int pin);
     }
 }

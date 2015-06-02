@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace PIN_GEN
 {
@@ -11,13 +13,29 @@ namespace PIN_GEN
             this.file_name = file_name;
         }
 
-        public int[] LoadPins()
+        public List<int> LoadPins()
         {
-            return new[] {1234};
+            var pins = new List<int>();
+
+            using (var pin_reader = new StreamReader(file_name))
+            {
+                String pin;
+
+                while ((pin = pin_reader.ReadLine()) != null)
+                {
+                    pins.Add(Convert.ToInt32(pin));
+                }
+            }
+
+            return pins;
         }
 
         public void SavePin(int pin)
         {
+            using (var pin_writer = new StreamWriter(file_name))
+            {
+                pin_writer.WriteLine(Convert.ToString(pin));
+            }
             
         }
     }

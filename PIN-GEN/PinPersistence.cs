@@ -14,9 +14,8 @@ namespace PIN_GEN
         public void HasBeenGenerated(int pin)
         {
             var stored_pins = file_system.LoadPins();
-            var index = Array.IndexOf(stored_pins, pin);
 
-            if (index == -1)
+            if ( !stored_pins.Contains(pin) )
             {
                 file_system.SavePin(pin);
             }
