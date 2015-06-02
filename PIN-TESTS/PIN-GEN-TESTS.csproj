@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="PinPersistencePolicyTests.cs" />
     <Compile Include="PinGenTests.cs" />
+    <Compile Include="PinValidationPolicyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

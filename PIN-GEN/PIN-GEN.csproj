@@ -43,6 +43,7 @@
     <Compile Include="FileSystemFacade.cs" />
     <Compile Include="PinGen.cs" />
     <Compile Include="PinPersistence.cs" />
+    <Compile Include="PinValidationPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

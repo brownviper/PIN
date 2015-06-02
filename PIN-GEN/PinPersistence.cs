@@ -15,7 +15,7 @@ namespace PIN_GEN
         {
             var stored_pins = file_system.LoadPins();
 
-            if ( !stored_pins.Contains(pin) )
+            if (!stored_pins.Contains(pin))
             {
                 file_system.SavePin(pin);
             }
