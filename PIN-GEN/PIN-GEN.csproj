@@ -43,7 +43,7 @@
     <Compile Include="DiskFileSystem.cs" />
     <Compile Include="FileSystemFacade.cs" />
     <Compile Include="PinGen.cs" />
-    <Compile Include="PinPersistence.cs" />
+    <Compile Include="PinPersistencePolicy.cs" />
     <Compile Include="PinValidationPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

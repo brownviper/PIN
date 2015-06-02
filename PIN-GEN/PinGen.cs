@@ -5,7 +5,7 @@ namespace PIN_GEN
 {
     public class PinGen
     {
-        private Random random;
+        private readonly Random random;
 
         public PinGen()
         {

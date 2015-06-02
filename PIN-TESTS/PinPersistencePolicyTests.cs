@@ -9,7 +9,7 @@ namespace PIN_TESTS
     public class PinPersistencePolicyTests
     {
         private Mock<FileSystemFacade> file_system;
-        private PinPersistence pin_persistence;
+        private PinPersistencePolicy pin_persistence;
         private List<int> stored_pins;
 
         [SetUp]
@@ -20,7 +20,7 @@ namespace PIN_TESTS
             file_system = new Mock<FileSystemFacade>();
             file_system.Setup(o => o.LoadPins()).Returns(stored_pins);
 
-            pin_persistence = new PinPersistence(file_system.Object);
+            pin_persistence = new PinPersistencePolicy(file_system.Object);
         }
 
 
@@ -33,13 +33,32 @@ namespace PIN_TESTS
         }
 
         [Test]
-        public void When_the_pin_is_not_stored_it_should_as_the_file_system_to_store_it()
+        public void HasBeenGenerated_should_return_false_when_no_pins_are_available()
         {
             file_system.Setup(o => o.LoadPins()).Returns(new List<int>());
 
-            pin_persistence.HasBeenGenerated(7575);
-
-            file_system.Verify(o => o.SavePin(7575), Times.Once);
+            Assert.That(pin_persistence.HasBeenGenerated(7575), Is.EqualTo(false));
         }
+
+
+        [Test]
+        public void HasBeenGenerated_should_return_false_when_generated_pin_is_new()
+        {
+            Assert.That(pin_persistence.HasBeenGenerated(7575), Is.EqualTo(false));
+        }
+
+        [Test]
+        public void HasBeenGenerated_should_return_true_when_pin_already_exist()
+        {
+            Assert.That(pin_persistence.HasBeenGenerated(9101), Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Save_should_pass_pin_to_file_system()
+        {
+            pin_persistence.Save(5932);
+
+            file_system.Verify(o => o.SavePin(5932), Times.Once);
+       }
     }
 }

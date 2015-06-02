@@ -8,7 +8,7 @@ namespace PIN_GEN
     {
         private string file_name;
 
-        DiskFileSystem(String file_name)
+        public DiskFileSystem(String file_name)
         {
             this.file_name = file_name;
         }
@@ -16,6 +16,9 @@ namespace PIN_GEN
         public List<int> LoadPins()
         {
             var pins = new List<int>();
+
+            if (!File.Exists(file_name))
+                using(File.Create(file_name)){}
 
             using (var pin_reader = new StreamReader(file_name))
             {
@@ -32,7 +35,7 @@ namespace PIN_GEN
 
         public void SavePin(int pin)
         {
-            using (var pin_writer = new StreamWriter(file_name))
+            using (var pin_writer = new StreamWriter(file_name, true))
             {
                 pin_writer.WriteLine(Convert.ToString(pin));
             }
