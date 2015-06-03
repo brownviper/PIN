@@ -12,6 +12,7 @@ namespace PIN_GEN
         public void ShowPin(int pin)
         {
             Console.WriteLine("New Pin Generated ---------> " + pin);
+            Console.WriteLine("\n");
         }
 
         public void Play()
