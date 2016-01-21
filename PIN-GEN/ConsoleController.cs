@@ -15,7 +15,7 @@ namespace PIN_GEN
             Console.WriteLine("\n");
         }
 
-        public void Play()
+        public void Start()
         {
 
             var pin_gen = new PinGen();
